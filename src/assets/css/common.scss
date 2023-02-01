@@ -1,0 +1,164 @@
+/*#region Common-Css*/
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+  scroll-behavior: smooth;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+/*#endregion*/
+
+/*#region Layout-Css*/
+:root {
+  --navbar-height: 44px;
+}
+#sec-base-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  #sec-main-body {
+    flex: 1 1 auto;
+    display: flex;
+
+    #sec-sidebar {
+      //#region variables-sidebar
+      --sidebar-background-color: white;
+      --sidebar-width-closed: 60px;
+      --sidebar-width-open: 250px;
+      --sidebar-text-color: #707070;
+      --sidebar-text-color-hover: #707070;
+      --sidebar-text-background-color-hover: hsla(210, 20%, 98%, 0.905);
+      //#endregion
+      width: var(--sidebar-width-closed);
+      transition: all 0.3s ease;
+      background-color: var(--sidebar-background-color);
+      max-height: calc(100vh - var(--navbar-height));
+      position: sticky;
+      top: var(--navbar-height);
+      .sidebar-toggle {
+        transition: transform 0.6s ease;
+      }
+      &.open {
+        width: var(--sidebar-width-open);
+        .sidebar-toggle {
+          transform: scaleX(-1);
+        }
+      }
+      .project-title {
+        margin-top: 2px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        min-width: calc(
+          var(--sidebar-width-open) - var(--sidebar-width-closed)
+        );
+      }
+      .project-logo {
+        min-width: var(--sidebar-width-closed);
+        border-radius: 0.5rem;
+        img {
+          width: 80%;
+        }
+      }
+      .sidebar-option-text {
+        color: var(--sidebar-text-color);
+        font-weight: 500;
+        white-space: nowrap;
+      }
+      .sidebar-option-icon {
+        min-width: var(--sidebar-width-closed);
+        text-align: center;
+        font-size: 20px;
+        color: var(--sidebar-text-color);
+        transition: all 0.3s ease;
+      }
+      #sec-sidebar-menu {
+        overflow-x: hidden;
+        height: 100%;
+        position: relative;
+        padding-top: 0.25rem;
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        .sidebar-menu-item {
+          min-height: 30px;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          margin-top: 0.125rem;
+          &:hover {
+            box-shadow: 0.125rem 0.1rem rgba(0, 0, 0, 0.075);
+            background-color: var(--sidebar-text-background-color-hover);
+            .sidebar-option-icon {
+              color: var(--sidebar-text-color-hover);
+            }
+            .sidebar-option-text {
+              color: var(--sidebar-text-color-hover);
+            }
+          }
+        }
+        .accordion-item {
+          border: 0;
+          position: relative;
+          .accordion-body {
+            padding: 0;
+            padding-left: 0.8rem;
+          }
+          .accordion-button {
+            padding: 0;
+            position: absolute;
+            left: 0;
+            /*#region Over-riding bootstrap styles*/
+            &::before {
+              flex-shrink: 0;
+              width: var(--bs-accordion-btn-icon-width);
+              height: var(--bs-accordion-btn-icon-width);
+              // margin: .2rem;
+              content: "";
+              background-image: var(--bs-accordion-btn-icon);
+              background-repeat: no-repeat;
+              background-size: 0.75rem;
+              background-position: center;
+              transform: rotate(-90deg);
+              transition: var(--bs-accordion-btn-icon-transition);
+              transition-duration: 0.1s;
+            }
+            &::after {
+              content: none;
+            }
+            &:focus {
+              z-index: 3;
+              border-color: initial;
+              outline: 0;
+              box-shadow: none;
+            }
+            &:not(.collapsed) {
+              color: inherit;
+              background-color: initial;
+              box-shadow: none;
+              &::before {
+                background-image: var(--bs-accordion-btn-active-icon);
+                transform: rotate(0deg);
+              }
+            }
+            /*#endregion*/
+          }
+        }
+      }
+    }
+
+    #sec-page-wrapper {
+      flex: 1 1 auto;
+    }
+  }
+}
+/*#endregion*/
