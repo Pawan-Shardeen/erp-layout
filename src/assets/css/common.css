@@ -1,0 +1,157 @@
+/*#region Common-Css*/
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+  scroll-behavior: smooth;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/*#endregion*/
+/*#region Layout-Css*/
+:root {
+  --navbar-height: 44px;
+}
+
+#sec-base-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+#sec-base-body #sec-main-body {
+  flex: 1 1 auto;
+  display: flex;
+}
+#sec-base-body #sec-main-body #sec-sidebar {
+  --sidebar-background-color: white;
+  --sidebar-width-closed: 60px;
+  --sidebar-width-open: 250px;
+  --sidebar-text-color: #707070;
+  --sidebar-text-color-hover: #707070;
+  --sidebar-text-background-color-hover: hsla(210, 20%, 98%, 0.905);
+  width: var(--sidebar-width-closed);
+  transition: all 0.3s ease;
+  background-color: var(--sidebar-background-color);
+  max-height: calc(100vh - var(--navbar-height));
+  position: -webkit-sticky;
+  position: sticky;
+  top: var(--navbar-height);
+}
+#sec-base-body #sec-main-body #sec-sidebar .sidebar-toggle {
+  transition: transform 0.6s ease;
+}
+#sec-base-body #sec-main-body #sec-sidebar.open {
+  width: var(--sidebar-width-open);
+}
+#sec-base-body #sec-main-body #sec-sidebar.open .sidebar-toggle {
+  transform: scaleX(-1);
+}
+#sec-base-body #sec-main-body #sec-sidebar .project-title {
+  margin-top: 2px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  min-width: calc(var(--sidebar-width-open) - var(--sidebar-width-closed));
+}
+#sec-base-body #sec-main-body #sec-sidebar .project-logo {
+  min-width: var(--sidebar-width-closed);
+  border-radius: 0.5rem;
+}
+#sec-base-body #sec-main-body #sec-sidebar .project-logo img {
+  width: 80%;
+}
+#sec-base-body #sec-main-body #sec-sidebar .sidebar-option-text {
+  color: var(--sidebar-text-color);
+  font-weight: 500;
+  white-space: nowrap;
+}
+#sec-base-body #sec-main-body #sec-sidebar .sidebar-option-icon {
+  min-width: var(--sidebar-width-closed);
+  text-align: center;
+  font-size: 20px;
+  color: var(--sidebar-text-color);
+  transition: all 0.3s ease;
+}
+#sec-base-body #sec-main-body #sec-sidebar #sec-sidebar-menu {
+  overflow-x: hidden;
+  height: 100%;
+  position: relative;
+  padding-top: 0.25rem;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  /* Hide scrollbar for Chrome, Safari and Opera */
+}
+#sec-base-body #sec-main-body #sec-sidebar #sec-sidebar-menu::-webkit-scrollbar {
+  display: none;
+}
+#sec-base-body #sec-main-body #sec-sidebar #sec-sidebar-menu .sidebar-menu-item {
+  min-height: 30px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  margin-top: 0.125rem;
+}
+#sec-base-body #sec-main-body #sec-sidebar #sec-sidebar-menu .sidebar-menu-item:hover {
+  box-shadow: 0.125rem 0.1rem rgba(0, 0, 0, 0.075);
+  background-color: var(--sidebar-text-background-color-hover);
+}
+#sec-base-body #sec-main-body #sec-sidebar #sec-sidebar-menu .sidebar-menu-item:hover .sidebar-option-icon {
+  color: var(--sidebar-text-color-hover);
+}
+#sec-base-body #sec-main-body #sec-sidebar #sec-sidebar-menu .sidebar-menu-item:hover .sidebar-option-text {
+  color: var(--sidebar-text-color-hover);
+}
+#sec-base-body #sec-main-body #sec-sidebar #sec-sidebar-menu .accordion-item {
+  border: 0;
+  position: relative;
+}
+#sec-base-body #sec-main-body #sec-sidebar #sec-sidebar-menu .accordion-item .accordion-body {
+  padding: 0;
+  padding-left: 0.8rem;
+}
+#sec-base-body #sec-main-body #sec-sidebar #sec-sidebar-menu .accordion-item .accordion-button {
+  padding: 0;
+  position: absolute;
+  left: 0;
+  /*#region Over-riding bootstrap styles*/
+  /*#endregion*/
+}
+#sec-base-body #sec-main-body #sec-sidebar #sec-sidebar-menu .accordion-item .accordion-button::before {
+  flex-shrink: 0;
+  width: var(--bs-accordion-btn-icon-width);
+  height: var(--bs-accordion-btn-icon-width);
+  content: "";
+  background-image: var(--bs-accordion-btn-icon);
+  background-repeat: no-repeat;
+  background-size: 0.75rem;
+  background-position: center;
+  transform: rotate(-90deg);
+  transition: var(--bs-accordion-btn-icon-transition);
+  transition-duration: 0.1s;
+}
+#sec-base-body #sec-main-body #sec-sidebar #sec-sidebar-menu .accordion-item .accordion-button::after {
+  content: none;
+}
+#sec-base-body #sec-main-body #sec-sidebar #sec-sidebar-menu .accordion-item .accordion-button:focus {
+  z-index: 3;
+  border-color: initial;
+  outline: 0;
+  box-shadow: none;
+}
+#sec-base-body #sec-main-body #sec-sidebar #sec-sidebar-menu .accordion-item .accordion-button:not(.collapsed) {
+  color: inherit;
+  background-color: initial;
+  box-shadow: none;
+}
+#sec-base-body #sec-main-body #sec-sidebar #sec-sidebar-menu .accordion-item .accordion-button:not(.collapsed)::before {
+  background-image: var(--bs-accordion-btn-active-icon);
+  transform: rotate(0deg);
+}
+#sec-base-body #sec-main-body #sec-page-wrapper {
+  flex: 1 1 auto;
+}
+
+/*#endregion*//*# sourceMappingURL=common.css.map */

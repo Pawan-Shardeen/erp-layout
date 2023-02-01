@@ -1,0 +1,24 @@
+#cntnr-userLogin {
+  background-image: url("/src/assets/images/white-background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: smaller;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+}
+#cntnr-userLogin > div {
+  min-width: 500px;
+}
+#cntnr-userLogin label,
+#cntnr-userLogin a {
+  margin: 0;
+  font-weight: 500;
+  cursor: pointer;
+}
+#cntnr-userLogin *:focus {
+  box-shadow: none;
+}/*# sourceMappingURL=style.css.map */

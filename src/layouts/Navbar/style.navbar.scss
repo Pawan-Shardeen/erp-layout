@@ -1,0 +1,28 @@
+#sec-main-navbar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+
+    #sec-user-engagement {
+      //#region variables-userEngagement
+      --userEngagement-text-color: #707070;
+      --userEngagement-text-color-hover: #707070;
+      --userEngagement-text-background-color-hover: #f8f9fa;
+      //#endregion
+      .dropdown-menu {
+        top: 95%;
+        right: 1%;
+        .dropdown-item {
+          font-weight: 400;
+          color: var(--userEngagement-text-color);
+          &:active,
+          &:hover {
+            color: var(--userEngagement-text-color-hover);
+            background-color: var(--userEngagement-text-background-color-hover);
+            box-shadow: 0.125rem 0.1rem rgba(0, 0, 0, 0.075);
+          }
+        }
+      }
+    }
+  }
